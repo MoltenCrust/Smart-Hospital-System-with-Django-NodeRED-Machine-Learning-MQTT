@@ -1,0 +1,19 @@
+<!-- Display historical data for sensors -->
+{% for sensor_name, sensor_history in historical_sensors.items %}
+    <h3>{{ sensor_name }} History</h3>
+    <ul>
+        {% for record in sensor_history|slice:"::-10" %}
+            <li>Data: {{ record.data }}, Timestamp: {{ record.timestamp }}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+<!-- Display historical data for actuators -->
+{% for actuator_name, actuator_history in historical_actuators.items %}
+    <h3>{{ actuator_name }} History</h3>
+    <ul>
+        {% for record in actuator_history|slice:"::-10" %}
+            <li>Data: {{ record.data }}, Timestamp: {{ record.timestamp }}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}

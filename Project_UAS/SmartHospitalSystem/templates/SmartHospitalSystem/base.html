@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .explanation-box {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .side-by-side-container {
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        .box {
+            background-color: #8f8f8f;
+            border: 5px solid #333;
+            padding: 20px;
+            width: 100%; /* Adjust as needed */
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .box img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: justify;
+            padding: 10px;
+        }
+    </style>
+    <title>Info</title>
+</head>
+<body>
+    <header>
+      <h2>Penjelasan Sistem</h2>
+      <p>Di industri kesehatan, mengelola dan menganalisis data pasien sangat penting. Sebuah proyek Django dapat dirancang untuk mengumpulkan, menyimpan, dan menganalisis data dari berbagai sumber dalam fasilitas kesehatan. Proyek ini dapat difokuskan pada meningkatkan perawatan pasien, mengoptimalkan operasional rumah sakit, dan memastikan kepatuhan terhadap regulasi kesehatan.</p>
+    </header>
+    <div class="side-by-side-container">
+        <div class="box">
+          <h3>"Patient Monitoring System"</h3>
+            <p><strong>Location:</strong> Patient Room</p>
+            <p><strong>Sensors:</strong> IV Level sensor, Heartbeat sensor, Flourescence-based glucose level sensor</p>
+            <p><strong>Aktuators:</strong> Alert, IV flow regulator, Insulin pump</p>
+            <p><strong>Explanation:</strong> Di dalam patient room, ada sistem Patient Monitoring System yang menggunakan 3 sensor dan 3 aktuator.</p>
+            <ul>
+              <li>Akuator Alert akan aktif jika IV level sensor lebih rendah dari 10 mL atau Heartbeat sensor lebih rendah dari 70 bpm atau Glucose sensor lebih dari 160 mg/dL, atau semua kombinasi kondisi-kondisi ini.</li>
+              <li>IV Flow Regulator akan aktif untuk membuat meningkatkan flow rate cairan IV jika heartbeat sensor dibawah 90 bpm dan level sensor di atas 150 mL.</li>
+              <li>Insulin Pump akan aktif untuk meningkat inslutin pump jika glucose level lebih dari 150 mg/dL.</li>
+            </ul>
+            <div class="image-box">
+                <img src="path/to/image1.jpg" alt="Image 1">
+            </div>
+            <p>Text Paragraph 1</p>
+        </div>
+
+        <div class="box">
+          <h3>"Visitor Health Check System"</h3>
+          <p><strong>Sensors:</strong> Camera detection, UV-C sensor, Thermal sensor</p>
+          <p><strong>Aktuators:</strong> Laser pointer, Door lock, Disinfectant spray</p>
+          <p><strong>Explanation:</strong> Ada sistem Visitor Health Check System yang menggunakan 3 sensor dan 3 aktuator.</p>
+          <ul>
+            <li>Laser pointer akan aktif jika Camera mendeteksi visitor yang tidak pakai masker</li>
+            <li>Door lock akan aktif jika visitor tidak memakai masker, UV-C sensor mendeteksi bakteri sebanyak 150 J/m^3 di visitor atau Thermal sensor mendeteksi suhu badan yang diatas 38°C, atau semua kombinasi kondisi-kondisi ini.</li>
+            <li>Disinfectant spray akan aktif jika UV-C sensor mendeteksi bakteri sebanyak 150 J/m^3 di visitor</li>
+          </ul>
+            <div class="image-box">
+                <img src="path/to/image2.jpg" alt="Image 2">
+            </div>
+            <p>Text Paragraph 2</p>
+        </div>
+
+        <div class="box">
+            <h3>Operating Room Conditioning System"</h3>
+            <p><strong>Location:</strong> Hospital Operation</p>
+            <p><strong>Sensors:</strong> Room pressure sensor, Temperature sensor, Humidity sensor</p>
+            <p><strong>Aktuators:</strong> Electric damper, HVAC system, Alarm</p>
+            <p><strong>Explanation:</strong> Ada sistem Operating Room Conditioning System yang menggunakan 3 sensor dan 3 aktuator.</p>
+            <ul>
+              <li>HVAC Sistem akan aktif menyalahkan cooling system jika sensor temperatur diatas 25 °C atau sensor humiditas diatas 65%, atau dua-duanya.</li>
+              <li>Alarm akan aktif jika sensor temperatur diatas 27 °C atau sensor humiditas diatas 70% atau sensor room pressure di bawah 2.0 Pa atau semua kombinasi kondisi-kondisi ini.</li>
+              <li>Electric damper akan aktif untuk meningkatkan tekanan ruangan jika sensor room pressure dibawah 2.5 Pa.</li>
+            </ul>
+            <div class="image-box">
+                <img src="path/to/image3.jpg" alt="Image 3">
+            </div>
+            <p>Text Paragraph 3</p>
+        </div>
+    </div>
+</body>
+</html>

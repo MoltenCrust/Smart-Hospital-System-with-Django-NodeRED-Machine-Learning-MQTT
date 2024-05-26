@@ -1,0 +1,389 @@
+[
+    {
+        "id": "caed25521efe1814",
+        "type": "tab",
+        "label": "Flow 3",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "438748d378be7763",
+        "type": "mqtt out",
+        "z": "caed25521efe1814",
+        "name": "",
+        "topic": "flourescent_based_sensor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3d6d44eaaa0b8be6",
+        "x": 940,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "987dd057b618950c",
+        "type": "mqtt out",
+        "z": "caed25521efe1814",
+        "name": "",
+        "topic": "IV_level_sensor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3d6d44eaaa0b8be6",
+        "x": 720,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "3b9fb85ce0961f7b",
+        "type": "inject",
+        "z": "caed25521efe1814",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "\"Active\"",
+        "payloadType": "str",
+        "x": 240,
+        "y": 440,
+        "wires": [
+            [
+                "5b2117cf2e2bdf3c",
+                "2a00724a213eb72b",
+                "bcd22cdf5b4b33fa",
+                "969b08fb3f4a6791",
+                "6e1622d77720ad94",
+                "3407bd53a66177f5",
+                "ef70c24f6e0e3ea0",
+                "a3a47d567f1a761a",
+                "5d1c82e84a5fb159"
+            ]
+        ]
+    },
+    {
+        "id": "5b2117cf2e2bdf3c",
+        "type": "random",
+        "z": "caed25521efe1814",
+        "name": "Random float",
+        "low": "0",
+        "high": "1000",
+        "inte": "false",
+        "property": "payload",
+        "x": 510,
+        "y": 220,
+        "wires": [
+            [
+                "987dd057b618950c"
+            ]
+        ]
+    },
+    {
+        "id": "2799ef063c2ef563",
+        "type": "mqtt out",
+        "z": "caed25521efe1814",
+        "name": "",
+        "topic": "heart_beat_sensor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3d6d44eaaa0b8be6",
+        "x": 830,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "d5cd8245f3f42aba",
+        "type": "mqtt out",
+        "z": "caed25521efe1814",
+        "name": "",
+        "topic": "camera_sensor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3d6d44eaaa0b8be6",
+        "x": 720,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "bf5b37404543342f",
+        "type": "mqtt out",
+        "z": "caed25521efe1814",
+        "name": "",
+        "topic": "thermal_sensor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3d6d44eaaa0b8be6",
+        "x": 900,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "ced5579263cfdb76",
+        "type": "mqtt out",
+        "z": "caed25521efe1814",
+        "name": "",
+        "topic": "UV-C_sensor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3d6d44eaaa0b8be6",
+        "x": 810,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "5ec5de35451d4d7d",
+        "type": "mqtt out",
+        "z": "caed25521efe1814",
+        "name": "",
+        "topic": "room_pressure_sensor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3d6d44eaaa0b8be6",
+        "x": 750,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "cf3e841378541672",
+        "type": "mqtt out",
+        "z": "caed25521efe1814",
+        "name": "",
+        "topic": "humidity_sensor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3d6d44eaaa0b8be6",
+        "x": 900,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "28fd52df77cf71f3",
+        "type": "mqtt out",
+        "z": "caed25521efe1814",
+        "name": "",
+        "topic": "temperature_sensor",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "3d6d44eaaa0b8be6",
+        "x": 840,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "bcd22cdf5b4b33fa",
+        "type": "random",
+        "z": "caed25521efe1814",
+        "name": "Random float",
+        "low": "0",
+        "high": "120",
+        "inte": "true",
+        "property": "payload",
+        "x": 510,
+        "y": 260,
+        "wires": [
+            [
+                "2799ef063c2ef563"
+            ]
+        ]
+    },
+    {
+        "id": "2a00724a213eb72b",
+        "type": "random",
+        "z": "caed25521efe1814",
+        "name": "Random float",
+        "low": "20",
+        "high": "30",
+        "inte": "false",
+        "property": "payload",
+        "x": 510,
+        "y": 620,
+        "wires": [
+            [
+                "28fd52df77cf71f3"
+            ]
+        ]
+    },
+    {
+        "id": "5d1c82e84a5fb159",
+        "type": "random",
+        "z": "caed25521efe1814",
+        "name": "Random float",
+        "low": "0",
+        "high": "15",
+        "inte": "false",
+        "property": "payload",
+        "x": 510,
+        "y": 580,
+        "wires": [
+            [
+                "5ec5de35451d4d7d"
+            ]
+        ]
+    },
+    {
+        "id": "969b08fb3f4a6791",
+        "type": "random",
+        "z": "caed25521efe1814",
+        "name": "Random integer",
+        "low": "100",
+        "high": "190",
+        "inte": "true",
+        "property": "payload",
+        "x": 520,
+        "y": 300,
+        "wires": [
+            [
+                "438748d378be7763"
+            ]
+        ]
+    },
+    {
+        "id": "6e1622d77720ad94",
+        "type": "random",
+        "z": "caed25521efe1814",
+        "name": "Random integer",
+        "low": "0",
+        "high": "80",
+        "inte": "true",
+        "property": "payload",
+        "x": 520,
+        "y": 660,
+        "wires": [
+            [
+                "cf3e841378541672"
+            ]
+        ]
+    },
+    {
+        "id": "3407bd53a66177f5",
+        "type": "random",
+        "z": "caed25521efe1814",
+        "name": "Random integer",
+        "low": "0",
+        "high": "1",
+        "inte": "true",
+        "property": "payload",
+        "x": 520,
+        "y": 400,
+        "wires": [
+            [
+                "d5cd8245f3f42aba"
+            ]
+        ]
+    },
+    {
+        "id": "ef70c24f6e0e3ea0",
+        "type": "random",
+        "z": "caed25521efe1814",
+        "name": "Random integer",
+        "low": "50",
+        "high": "250",
+        "inte": "true",
+        "property": "payload",
+        "x": 520,
+        "y": 440,
+        "wires": [
+            [
+                "ced5579263cfdb76"
+            ]
+        ]
+    },
+    {
+        "id": "a3a47d567f1a761a",
+        "type": "random",
+        "z": "caed25521efe1814",
+        "name": "Random float",
+        "low": "35",
+        "high": "40",
+        "inte": "true",
+        "property": "payload",
+        "x": 510,
+        "y": 480,
+        "wires": [
+            [
+                "bf5b37404543342f"
+            ]
+        ]
+    },
+    {
+        "id": "3d6d44eaaa0b8be6",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "127.0.0.1",
+        "port": "1889",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": false,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]

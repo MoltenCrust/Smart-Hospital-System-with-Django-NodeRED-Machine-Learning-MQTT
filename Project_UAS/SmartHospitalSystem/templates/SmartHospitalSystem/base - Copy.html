@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Proyek WebIoT</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<style>
+    .main_title{
+        text-align: center;
+        background-color: lightsalmon;
+    }
+
+    .text_center{
+        text-align: center;
+    }
+
+    .table{
+        display: flex;
+        margin-bottom: 60px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main_div{
+        margin-top: 8px;
+        display: grid;
+        grid-template-columns: 520px 1fr;
+    }
+
+    .row1{
+        background-color: lightcyan; width: 100%; height: 100%; text-align: center;
+    }
+    .row2{
+        background-color: lightsteelblue; width: 100%; height: 100%; text-align: center;
+    }
+    .row3{
+        background-color: lightgray; width: 100%; height: 100%; text-align: center;
+    }
+
+    .td_size{
+        width: 200px; height: 200px;
+    }
+
+    .square{
+        width: 200px;
+        height: 200px;
+        margin-right: 20px
+    }
+
+    .grayscale{
+            filter: grayscale(100%);
+            height: 100px; width: 100px;
+        }
+
+    .hover-text {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: black;
+      color: white;
+    }
+    .hover-box:hover .hover-text {
+      display: block;
+    }
+    
+</style>
+
+<body>
+    <div class="main_div">
+        <div style="background-color: lightblue;">
+            <div class="main_title"><h1>SMART HOSPITAL SYSTEM </h1></div>
+        <h3>Martin Emmanuel Chang - 212100199<br>Moses Anthony Kwik - 212100291</h3>
+
+            <!-- First Table -->
+            <div class="text_center"><h3>Patient Room (Patient Monitoring System)</h3></div>
+            <div class="table">
+                <table border="1">
+                    <!-- Table header for both sensors and actuators -->
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Data</th>
+                        <th>Unit</th>
+                        <th>Timestamp</th>
+                    </tr>
+                
+                    <!-- Loop through sensors and actuators and display data for Table 1 -->
+                    {% for sensor in sensors_table1 %}
+                        <tr>
+                            <td>{{ sensor.name }}</td>
+                            <td>Sensor</td>
+                            <td>{{ sensor.Data|floatformat:2 }}</td>
+                            <td>{{ sensor.unit }}</td>
+                            <td>{{ sensor.timestamp }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            
+            <!-- Second Table -->
+            <div class="text_center"><h3>Health Regulation (Visitor Health Check System)</h3></div>
+            <div class="table">
+                <table border="1">
+                    <!-- Table header for both sensors and actuators -->
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Data</th>
+                        <th>Unit</th>
+                        <th>Timestamp</th>
+                    </tr>
+                
+                    <!-- Loop through sensors and actuators and display data for Table 2 -->
+                    {% for sensor in sensors_table2 %}
+                        <tr>
+                            <td>{{ sensor.name }}</td>
+                            <td>Sensor</td>
+                            <td>{{ sensor.Data|floatformat:2 }}</td>
+                            <td>{{ sensor.unit }}</td>
+                            <td>{{ sensor.timestamp }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <!-- Third Table -->
+            <div class="text_center"><h3>Hospital Operation (Surgery Room Conditioning System)</h3></div>
+            <div class="table">
+                <table border="1">
+                    <!-- Table header for both sensors and actuators -->
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Data</th>
+                        <th>Unit</th>
+                        <th>Timestamp</th>
+                    </tr>
+                
+                    <!-- Loop through sensors and actuators and display data for Table 3 -->
+                    {% for sensor in sensors_table3 %}
+                        <tr>
+                            <td>{{ sensor.name }}</td>
+                            <td>Sensor</td>
+                            <td>{{ sensor.Data|floatformat:2 }}</td>
+                            <td>{{ sensor.unit }}</td>
+                            <td>{{ sensor.timestamp }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <!-- water_level_sensor -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    var patientTable = document.getElementById('table_1');
+                    var displayElement = document.getElementById('waterLevelSensor');
+            
+                    // Check if the table and display element exist
+                    if (patientTable && displayElement && patientTable.rows.length > 1) {
+                        // Access data of the first row, column 3 (index 2)
+                        var firstRowData = patientTable.rows[1].cells[2].innerHTML;
+            
+                        // Display the data in the specified element
+                        displayElement.textContent = 'water_level_sensor: ' + firstRowData;
+                    }
+                });
+            </script>
+
+            <!-- Your JavaScript code for auto-refresh -->
+            <script>
+                function autoRefresh() {
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1000);
+                }
+                autoRefresh();
+            </script>
+            </div>
+        <div style="
+        margin-top: auto;
+        display: grid;
+        ">
+          <script>
+            function redirectToNewPage() {
+              // Specify the URL of the new HTML page
+              var newPageUrl = 'graph.html';
+        
+              // Redirect to the new page
+              window.location.href = newPageUrl;
+            }
+          </script>
+        <button onclick="scrollToSection()">Click to Actuator Graphs</button>
+            <table border="1">
+                <tbody>
+                    {% block content %}
+                    <tr>
+                        <td class="td_size">
+                            <div>
+                                <div class="row1">
+                                    alert_actuator
+                                </div>
+                                <div>
+                                    {% if result_true_1_list.0 == 0.0 %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/4325/4325930.png" alt="act_img" style="filter: grayscale(100%);">
+                                    {% else %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/4325/4325930.png" alt="act_img">
+                                    {% endif %}
+                                </div>
+                            </div>
+                                <div>
+                                    ML Output: {{ result_true_1_list.0 }}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td_size">
+                            <div>
+                                <div class="row1">
+                                    IV_flow_regulator_actuator
+                                </div>
+                                <div>
+                                    {% if result_true_1_list.1 == 0.0 %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/1043/1043122.png" alt="act_img" style="filter: grayscale(100%);">
+                                    {% else %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/1043/1043122.png" alt="act_img">
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    ML Output: {{ result_true_1_list.1 }}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td_size">
+                            <div>
+                                <div class="row1">
+                                    insulin_pump_actuator
+                                </div>
+                                <div>
+                                    {% if result_true_1_list.2 == 0.0 %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/4337/4337828.png" alt="act_img" style="filter: grayscale(100%);">
+                                    {% else %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/4337/4337828.png" alt="act_img">
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    ML Output: {{ result_true_1_list.2 }}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td_size">
+                            <div>
+                                <div class="row2">
+                                    laser_pointer_actuator
+                                </div>
+                                <div>
+                                    {% if result_true_2_list.0 == 0.0 %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/3154/3154286.png" alt="act_img" style="filter: grayscale(100%);">
+                                    {% else %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/3154/3154286.png" alt="act_img">
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    ML Output: {{ result_true_2_list.0 }}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td_size">
+                            <div>
+                                <div class="row2">
+                                    door_lock_actuator
+                                </div>
+                                <div>
+                                    {% if result_true_2_list.1  == 0.0 %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/3147/3147183.png" alt="act_img" style="filter: grayscale(100%);">
+                                    {% else %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/3147/3147183.png" alt="act_img">
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    ML Output: {{ result_true_2_list.1 }}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td_size">
+                            <div>
+                                <div class="row2">
+                                    disinfectant_spray_actuator
+                                </div>
+                                <div>
+                                    {% if result_true_2_list.2 == 0.0 %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/3088/3088135.png" alt="act_img" style="filter: grayscale(100%);">
+                                    {% else %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/3088/3088135.png" alt="act_img">
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    ML Output: {{ result_true_2_list.2 }}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="td_size">
+                            <div>
+                                <div class="row3">
+                                    electric_damper_actuator
+                                </div>
+                                <div>
+                                    {% if result_true_3_list.0 == 0.0 %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/12029/12029531.png" alt="act_img" style="filter: grayscale(100%);">
+                                    {% else %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/12029/12029531.png" alt="act_img">
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    ML Output: {{ result_true_3_list.0 }}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td_size">
+                            <div>
+                                <div class="row3">
+                                    HVAC_system_actuator
+                                </div>
+                                <div>
+                                    {% if result_true_3_list.1 == 0.0 %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/9047/9047815.png" alt="act_img" style="filter: grayscale(100%);">
+                                    {% else %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/9047/9047815.png" alt="act_img">
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    ML Output: {{ result_true_3_list.1 }}
+                                </div>
+                            </div>
+                        </td>
+                        <td class="td_size">
+                            <div>
+                                <div class="row3">
+                                    alarm_actuator
+                                </div>
+                                <div>
+                                    {% if result_true_3_list.2 == 0.0 %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/1100/1100349.png" alt="act_img" style="filter: grayscale(100%);">
+                                    {% else %}
+                                        <img height="100px" width="100px" src="https://cdn-icons-png.flaticon.com/128/1100/1100349.png" alt="act_img">
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    ML Output: {{ result_true_3_list.2 }}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endblock %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div>
+        <h2>Information</h2>
+        <p>Di industri kesehatan, mengelola dan menganalisis data pasien sangat penting. Sebuah proyek Django dapat dirancang untuk mengumpulkan, menyimpan, dan menganalisis data dari berbagai sumber dalam fasilitas kesehatan. Proyek ini dapat difokuskan pada meningkatkan perawatan pasien, mengoptimalkan operasional rumah sakit, dan memastikan kepatuhan terhadap regulasi kesehatan.</p>
+      
+        <h2>Sensor dan Akuator yang digunakan</h2>
+      
+        <u>Patient Monitoring System</u>
+        <p><strong>Location:</strong> Patient Room</p>
+        <p><strong>Sensors:</strong> IV Level sensor, Heartbeat sensor, Flourescence-based glucose level sensor</p>
+        <p><strong>Aktuator:</strong> Alert, IV flow regulator, Insulin pump</p>
+        <p><strong>Explanation:</strong> Di dalam patient room, ada sistem Patient Monitoring System yang menggunakan 3 sensor dan 3 aktuator.</p>
+        <ul>
+          <li>Akuator Alert akan aktif jika IV level sensor lebih rendah dari 10 mL atau Heartbeat sensor lebih rendah dari 70 bpm atau Glucose sensor lebih dari 160 mg/dL, atau semua kombinasi kondisi-kondisi ini.</li>
+          <li>IV Flow Regulator akan aktif untuk membuat meningkatkan flow rate cairan IV jika heartbeat sensor dibawah 90 bpm dan level sensor di atas 150 mL.</li>
+          <li>Insulin Pump akan aktif untuk meningkat inslutin pump jika glucose level lebih dari 150 mg/dL.</li>
+        </ul>
+        <br>
+
+        <u>Visitor Health Check System</u>
+        <p><strong>Sensors:</strong> Camera detection, UV-C sensor, Thermal sensor</p>
+        <p><strong>Aktuator:</strong> Laser pointer, Door lock, Disinfectant spray</p>
+        <p><strong>Explanation:</strong> Ada sistem Visitor Health Check System yang menggunakan 3 sensor dan 3 aktuator.</p>
+        <ul>
+          <li>Laser pointer akan aktif jika Camera mendeteksi visitor yang tidak pakai masker</li>
+          <li>Door lock akan aktif jika visitor tidak memakai masker, UV-C sensor mendeteksi bakteri sebanyak 150 J/m^3 di visitor atau Thermal sensor mendeteksi suhu badan yang diatas 38°C, atau semua kombinasi kondisi-kondisi ini.</li>
+          <li>Disinfectant spray akan aktif jika UV-C sensor mendeteksi bakteri sebanyak 150 J/m^3 di visitor</li>
+        </ul>
+        <br>
+
+        <u>Operating Room Conditioning System</u>
+        <p><strong>Location:</strong> Hospital Operation</p>
+        <p><strong>Sensors:</strong> Room pressure sensor, Temperature sensor, Humidity sensor</p>
+        <p><strong>Aktuator:</strong> Electric damper, HVAC system, Alarm</p>
+        <p><strong>Explanation:</strong> Ada sistem Operating Room Conditioning System yang menggunakan 3 sensor dan 3 aktuator.</p>
+        <ul>
+          <li>HVAC Sistem akan aktif menyalahkan cooling system jika sensor temperatur diatas 25 °C atau sensor humiditas diatas 65%, atau dua-duanya.</li>
+          <li>Alarm akan aktif jika sensor temperatur diatas 27 °C atau sensor humiditas diatas 70% atau sensor room pressure di bawah 2.0 Pa atau semua kombinasi kondisi-kondisi ini.</li>
+          <li>Electric damper akan aktif untuk meningkatkan tekanan ruangan jika sensor room pressure dibawah 2.5 Pa.</li>
+        </ul>
+        <br>
+
+        <h2>Sensor Ranges</h2>
+        <p>water_level_sensor = 0 - 1000 mL</p>
+        <p>heart_beat_sensor = 0 - 120 bpm</p>
+        <p>flourescent_based_sensor = 100 - 190 mg/dL</p>
+        <p>camera_sensor = boolean</p>
+        <p>microbial_sensor = 50 - 250 J/m^3</p>
+        <p>thermal_sensor = 35 - 40 C</p>
+        <p>room_pressure_sensor = 0 - 15 Pa</p>
+        <p>temperature_sensor = 20 - 30 C</p>
+        <p>humidity_sensor = 0 - 80 %</p>
+        <br>
+
+        <h2>Sensor details:</h2>
+        <p>humidity_sensor: Sensor untuk mengukur humiditas dalam ruang operasi</p>
+        <p>temperature_sensor:Sensor untuk mengukur suhu dalam ruang operasi</p>
+        <p>room_pressure_sensor:Sensor untuk mengukur tekanan positif dalam ruangan operasi</p>
+        <p>thermal_sensor:Sensor untuk mendeteksi suhu badan visitor</p>
+        <p>microbial_sensor:Sensor digunakan untuk mendeteksi bakteri di visitor</p>
+        <p>camera_sensor:Sensor digunakan untuk mendeteksi jika visitor memakai masker atau tidak</p>
+        <p>flourescent_based_sensor:Sensor untuk mengukur glucose level pasien</p>
+        <p>heart_beat_sensor:Mengukur detak jantung pasien</p>
+        <p>IV_level_sensor:Mengukur level cairan infus</p>
+    </div>
+<br>
+    <div id="scrollToSection"
+    style="
+    background-color: aqua;
+    text-align: center;">Graphs</div>
+    <script>
+        function scrollToSection() {
+            var section = document.getElementById('scrollToSection');
+
+            // Check if the section exists
+            if (section) {
+                // Calculate the offset of the section from the top of the page
+                var offsetTop = section.offsetTop;
+
+                // Use smooth scrolling behavior
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    </script>
+    <div id="chart1">
+        <canvas id="sensorChart1" width="50" height="10"></canvas>
+    </div>
+    <div id="chart2">
+        <canvas id="sensorChart2"width="50" height="10"></canvas>
+    </div>
+    <div id="chart3">
+        <canvas id="sensorChart3"width="50" height="10"></canvas>
+    </div>
+    <div id="chart4">
+        <canvas id="sensorChart4"width="50" height="10"></canvas>
+    </div>
+    <div id="chart5">
+        <canvas id="sensorChart5"width="50" height="10"></canvas>
+    </div>
+    <div id="chart6">
+        <canvas id="sensorChart6"width="50" height="10"></canvas>
+    </div>
+    <div id="chart7">
+        <canvas id="sensorChart7"width="50" height="10"></canvas>
+    </div>
+    <div id="chart8">
+        <canvas id="sensorChart8"width="50" height="10"></canvas>
+    </div>
+    <div id="chart9">
+        <canvas id="sensorChart9"width="50" height="10"></canvas>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Sample data (replace this with your actual data)
+            var sensorData = {{ last_100_sensor_data|safe }};
+    
+            // Function to create a chart for a specific sensor
+            function createChart(sensorName, chartContainerId, chartId) {
+                var ctx = document.getElementById(chartId).getContext('2d');
+                var data = {
+                    labels: Array.from({ length: sensorData[sensorName].length }, (_, i) => i + 1),
+                    datasets: [{
+                        label: sensorName,
+                        data: sensorData[sensorName],
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1,
+                        fill: false
+                    }]
+                };
+                var options = {
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom'
+                        }
+                    }
+                };
+                new Chart(ctx, {
+                    type: 'line',
+                    data: data,
+                    options: options
+                });
+            }
+        
+            // Create charts for each sensor
+            createChart('IV_level_sensor', 'chart1', 'sensorChart1');
+            createChart('heart_beat_sensor', 'chart2', 'sensorChart2');
+            createChart('flourescent_based_sensor', 'chart3', 'sensorChart3');
+            createChart('camera_sensor', 'chart4', 'sensorChart4');
+            createChart('UV-C_sensor', 'chart5', 'sensorChart5');
+            createChart('thermal_sensor', 'chart6', 'sensorChart6');
+            createChart('room_pressure_sensor', 'chart7', 'sensorChart7');
+            createChart('temperature_sensor', 'chart8', 'sensorChart8');
+            createChart('humidity_sensor', 'chart9', 'sensorChart9');
+        });
+    </script>
+
+</body>
+</html>

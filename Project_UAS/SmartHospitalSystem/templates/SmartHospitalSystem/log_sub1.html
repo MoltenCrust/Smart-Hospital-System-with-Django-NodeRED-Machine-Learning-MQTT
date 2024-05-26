@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .explanation-box {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .side-by-side-container {
+            display: flex;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        .box {
+            background-color: #8f8f8f;
+            border: 5px solid #333;
+            padding: 20px;
+            width: 100%; /* Adjust as needed */
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .box img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: justify;
+            padding: 10px;
+        }
+        .table{
+        display: flex;
+        margin-bottom: 60px;
+        justify-content: center;
+        align-items: center;
+        background-color: #8f8f8f;
+        border: 5px solid #333;
+        }
+    </style>
+    <title>Log Sub 1</title>
+</head>
+<body>
+    <header>
+      <h2>Subsystem 1: Patient Monitoring System</h2>
+    </header>
+    <div class="table">
+      <table border="1">
+          <!-- Table header for both sensors and actuators -->
+          <tr>
+              <th>Time tag</th>
+              <th>Sensor 1: <br> IV_level_sensor</th>
+              <th>Sensor 2: <br> heart_beat_sensor</th>
+              <th>Sensor 3: <br> flourescent_based_sensor</th>
+              <th>Actuator 1: <br> alert_actuator</th>
+              <th>Actuator 2: <br> IV_flow_regulator_actuator</th>
+              <th>Actuator 3: <br> insulin_pump_actuator</th>
+          </tr>
+          
+          <!-- Loop through sensors and actuators and display data for Table 1 -->
+          {% for sensor in sensors_table1 %}
+              <tr>
+                  <td>{{ sensor.timestamp }}</td>
+                  <td>{{ sensor.name }}</td>
+                  <td>Sensor</td>
+                  <td>{{ sensor.Data|floatformat:2 }}</td>
+                  <td>{{ sensor.unit }}</td>
+              </tr>
+          {% endfor %}
+      </table>
+  </div>
+</body>
+</html>
